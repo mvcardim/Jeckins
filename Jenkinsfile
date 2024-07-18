@@ -4,7 +4,7 @@ pipeline{
         stage('Buil Image') {
             steps {
                 script{
-                    dockerapp = docker.build("mvcardim/Jeckins",'-f ./src/Dokerfile ./src')"
+                    dockerapp = docker.build("mvcardim/Jeckins",'-f ./src/Dokerfile ./src')
                       }
                     }
                     
