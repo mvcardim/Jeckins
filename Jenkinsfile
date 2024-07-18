@@ -1,12 +1,13 @@
 pipeline{
     agent any
     stages{
-        stage('inicial') {
+        stage('Buil Image') {
             steps {
                 script{
-                    echo 'Iniciando  a pipeline'
+                    dockerapp = docker.build("mvcardim/jeckins",-f ./src/Dokerfile ./src)"
                       }
+                    }
+                    
+            }
         }
-    }
-}
-}
+}                
