@@ -19,7 +19,7 @@ pipeline{
             }
          stage ('Deploy Kubernets')
             steps {
-                withKubeConfig([credentialID: 'kubeconfig']){
+                withKubeConfig([credentialsID: 'kubeconfig']){
                     sh 'kubectl apply -f ./k8s/deployment.yalm'
                 }
             }   
