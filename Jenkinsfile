@@ -17,6 +17,12 @@ pipeline{
                         dockerapp.push("${env.BUILD_ID}")
                 }
             }
+         stage ('Deploy Kubernets')
+            steps {
+                withKubeConfig([credentialID: 'kubeconfig']){
+                    sh 'kubectl apply -f ./k8s/deployment.yalm'
+                }
+            }   
         } 
    }
 }                
