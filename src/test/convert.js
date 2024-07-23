@@ -12,7 +12,7 @@ describe('Conversor de Temperatura', () => {
   
     });
 
-    it('Deve converter corretamente Celsius para Fahrenheit', (done) => {
+    it('Converte Celsius para Fahrenheit', (done) => {
 
       const resultado = convert.celsiusFahrenheit(55);
 
