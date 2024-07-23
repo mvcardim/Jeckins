@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: conversao-temperatura
-        image: arisonmota/conversao-temperatura:v2
+        image: mvcardim/conversao-temperatura:v1
 
 ---
 
