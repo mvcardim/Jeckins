@@ -1,15 +1,15 @@
-pipeline{
+pipeline {
     agent any
-    stages{
+    stages {
         stage('Buil Image') {
             steps {
-                script{
+                script {
                     dockerapp = docker.build("mvcardim/jeckins:${env.BUILD_ID}",'-f ./src/Dockerfile ./src')
                       }
                     }
         stage ('Push Image') {
             steps {
-                script{
+                script { 
                     docker.withRegistry('https://registry.hub.docker.com','dockerhub'){
                       dockerapp.push('latest')
                       dockerapp.push("${env.BUILD_ID}")  
