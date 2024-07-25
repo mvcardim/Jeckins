@@ -1,7 +1,8 @@
 pipeline {
     agent any
-    
-                }
+    environment {
+        KUBECONFIG = "/var/lib/jenkins/.kube/config"
+    }
     stages {
         stage('Build Image') {
             steps {
@@ -22,13 +23,10 @@ pipeline {
         }
         stage('Deploy Kubernetes') {
             steps {
-                environment {
-                KUBECONFIG = "/var/lib/jenkins/.kube/config"
-                 {
-                    sh 'kubectl apply -f ./k8s/deployment.yaml'
-                }
+                sh 'kubectl apply -f ./k8s/deployment.yaml'
             }
         }
     }
 }
+
 
