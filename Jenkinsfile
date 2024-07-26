@@ -22,8 +22,15 @@ pipeline {
             }
         }
         stage('Deploy Kubernetes') {
+            environment{
+                tag_version = "${env.BUILD_ID}" 
+            }
             steps {
-                sh 'kubectl apply -f ./k8s/deployment.yaml'
+                 witKubeConfig([credentialsId: 'kubeconfig']){
+                    sh 'sed -i "s/{{tag}}/$tag_version/g" ./home/marco/jeckins/Jeckins/k8s/deployment.yaml'
+                    sh 'kubectl apply -f ./k8s/deployment.yaml'
+                 }
+                
             }
         }
     }
